@@ -1,0 +1,29 @@
+default: &default
+  adapter: postgresql
+  encoding: SQL_ASCII
+
+
+
+
+development:
+  <<: *default
+  database: stern_telecom
+  host: <%= ENV['DB_HOST'] || 'localhost' %>
+  username: <%= ENV['DB_USER'] || 'postgres' %>
+  password: <%= ENV['DB_PASS'] || 'postgres' %>
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *default
+  database: stern_telecom
+  host: <%= ENV['DB_HOST'] || 'localhost' %>
+  username: <%= ENV['DB_USER'] || 'postgres' %>
+  password: <%= ENV['DB_PASS'] || 'postgres' %>
+
+production:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
+  pool: <%= ENV['DB_POOL'] || ENV['MAX_THREADS'] || 25 %>
+
