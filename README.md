@@ -8,7 +8,11 @@ Used sources to create this project
 
 First thing to do is to make sure your RoR app is running on version 5.2.x (Cloud9 Automatically starts every new app with 4.2)
 
-Update first by using sudo apt 
+Update first by using apt-get update
+
+then use gem install rails -v 5.2
+
+Then rails new my-app
 
 Setting up postgresql
 https://community.c9.io/t/setting-up-postgresql/1573
