@@ -28,6 +28,12 @@ Set up webpacker
 https://community.c9.io/t/installing-node-packages-with-yarn/10393
 https://github.com/rails/webpacker/blob/master/docs/cloud9.md
 
+start webpacker ./bin/webpack-dev-server
+
+start rails server ./bin/rails s -b $IP -p $PORT
+
+Working Rails, Spree & ReactJS app
+
 change Front-End to ReactJS to get this app
 
 More to be added
