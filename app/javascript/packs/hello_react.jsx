@@ -6,17 +6,11 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 
-import Index from '../components/Index'
-import Header from '../components/shared/Header'
-import Footer from '../components/shared/Footer'
+
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <React.Fragment>
-      <Header />
-      <Index />
-      <Footer />
-    </React.Fragment>,
+    <Hello />,
     document.body.appendChild(document.createElement('div')),
   )
 })
