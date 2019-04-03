@@ -71,7 +71,7 @@ development:
     use_local_ip: false
     quiet: false
     headers:
-      'Access-Control-Allow-Origin': '*'
+      'Access-Control-Allow-Origin': 'https://stern-telecom-react-salman15.c9users.io:8082'
     watch_options:
       ignored: '**/node_modules/**'
 

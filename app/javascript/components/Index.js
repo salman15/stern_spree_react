@@ -4,10 +4,9 @@ import PropTypes from "prop-types";
 import ProductsList from "./products/ProductsList";
 import axios from 'axios';
 
-
-
 const REACT_VERSION = React.version;
-const API = 'https://stern-telecom-react-salman15.c9users.io/api/v2/storefront/products';
+const include = '?include=images';
+const API = 'https://stern-telecom-react-salman15.c9users.io/api/v2/storefront/products' + include;
 
 const styles = {
   card: {
@@ -22,8 +21,8 @@ class Index extends React.Component {
     constructor(props){
 		super(props);
 		this.state = {
-    		products: [],
-    		isLoading: false,
+    		productsData: {},
+    		isLoading: true,
     		error: null,
     };
   }
@@ -31,18 +30,20 @@ class Index extends React.Component {
     this.setState({ isLoading: true });
     axios.get(API)
       .then(result => this.setState({
-        products: result.data.data,
-        productsData: result.data.data.attributes,
+        productsData: result.data,
         isLoading: false,
       }))
       .catch(error => this.setState({
         error,
         isLoading: false
       }));
-      console.log('products', this.state.products.map(product => {product.relationships.images.data.type} ))
+      console.log(
+        'productsData', 
+        this.state.productsData
+        )
   }
   render() {
-    const { products, isLoading, error } = this.state;
+    const { productsData, isLoading, error } = this.state;
     
     if (error) {
       return <p>{error.message}</p>;
@@ -53,7 +54,7 @@ class Index extends React.Component {
     return (
       <React.Fragment>
     	  <h1>React version: {REACT_VERSION}</h1>
-    	  <ProductsList products={this.state.products} />
+    	  <ProductsList products={this.state.productsData.data} images={this.state.productsData.included} />
       </React.Fragment>
     );
   }

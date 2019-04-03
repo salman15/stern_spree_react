@@ -10,51 +10,71 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+const url = "https://stern-telecom-react-salman15.c9users.io"
+
+const styles = {
+  card: {
+    maxWidth: 345,
+  },
+  media: {
+    height: 140,
+  },
+};
+
 class ProductsList extends React.Component {
   constructor(props) {
-        super(props);
-        const { products } = this.props;
-        this.state = {
-            products
-        };
-    }
+    super(props);
+    const { classes } = props;
+    const { products, images } = this.props;
+    this.state = {
+      products,
+      images,
+      classes
+    };
+  }
   render () {
+    const { products, images } = this.state;
+    
     return (
       <React.Fragment>
         <ul>
           <p>Shop Products</p>
-          
-          {this.state.products.map(product =>
-            <li key={product.objectID}>
-              <p>{product.attributes.price}</p>
-                <Card>
+          {
+          products.map(product =>
+            <li key={product.key}>
+            <Card className={this.state.classes.card}>
   			      <CardActionArea>
-  			        <CardMedia
-  			          
-  			          image={product.relationships.images.data.type}
-  			          title={product.attributes.name}
-  			        />
+    			      {product.relationships.images.data.map(({ id }) => {
+                    let image = images.find(image => image.id == id >=1);
+                    return image ? (
+                      <CardMedia
+                        className={this.state.classes.media}
+        			          image= {`${url}/${image.attributes.styles[3].url}`}
+        			        />
+                    ) : null;
+                  })}
+  			        
   			        <CardContent>
   			          <Typography gutterBottom variant="h5" component="h2">
   			           {product.attributes.name}
   			          </Typography>
   			          <Typography component="p">
-  			            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-  			            across all continents except Antarctica
+  			            {product.attributes.name}
   			          </Typography>
   			        </CardContent>
   			      </CardActionArea>
   			      <CardActions>
   			        <Button size="small" color="primary">
-  			          Share
+  			         {product.attributes.display_price} 
   			        </Button>
   			        <Button size="small" color="primary">
-  			          Learn More
+  			          add to cart
   			        </Button>
   			      </CardActions>
   			    </Card>
             </li>
-          )}
+            )
+          }
         </ul>
       </React.Fragment>
     );
@@ -64,4 +84,4 @@ class ProductsList extends React.Component {
 ProductsList.propTypes = {
   greeting: PropTypes.string
 };
-export default ProductsList
+export default withStyles(styles)(ProductsList);
