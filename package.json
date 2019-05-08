@@ -4,15 +4,26 @@
   "dependencies": {
     "@babel/preset-react": "^7.0.0",
     "@rails/webpacker": "^4.0.2",
+    "@spree/storefront-api-v2-sdk": "^2.1.4",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+    "material-auto-rotating-carousel": "^3.0.1",
+    "material-ui-icons": "^1.0.0-beta.36",
     "prop-types": "^15.7.2",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
+    "react-slick": "^0.23.2",
+    "react-swipeable-views": "^0.13.1",
     "react_ujs": "^2.4.4",
     "yarn": "^1.13.0"
   },
   "devDependencies": {
-    "webpack": "^4.29.6",
+    "css-loader": "^2.1.1",
+    "mini-css-extract-plugin": "^0.6.0",
+    "node-sass": "^4.11.0",
+    "resolve-url-loader": "^3.1.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.30.0",
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.2.1"
   }

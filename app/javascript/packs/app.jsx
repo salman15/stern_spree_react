@@ -3,19 +3,19 @@
 // of the page.
 
 import React from 'react'
-import ReactDOM from 'react-dom'
-import PropTypes from 'prop-types'
-
+import ReactDOM, { render } from 'react-dom'
+// Browser Router
+import { BrowserRouter } from 'react-router-dom'
+// Index
 import Index from '../components/Index'
-import Header from '../components/shared/Header'
-import Footer from '../components/shared/Footer'
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     <React.Fragment>
-      <Header />
-      <Index />
-      <Footer />
+            
+      <BrowserRouter>
+        <Index />
+      </BrowserRouter>
     </React.Fragment>,
     document.body.appendChild(document.createElement('div')),
   )
